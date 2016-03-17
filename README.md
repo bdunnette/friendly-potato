@@ -1,4 +1,4 @@
-# animated-pancake
+# friendly-potato :smiley: :sweet_potato: 
 
 ## Develop It!
 
