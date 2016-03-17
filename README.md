@@ -1,4 +1,6 @@
-# friendly-potato :smiley: :sweet_potato: 
+# friendly-potato
+
+![Potato Potato, Potato Joy!](http://56.media.tumblr.com/7c0814af77c916439b1aa5952c524706/tumblr_inline_nxx6l260C21rv5alo_1280.jpg)
 
 ## Develop It!
 
