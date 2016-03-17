@@ -7,9 +7,11 @@ var couchappOptions = {
   // auth:{username:admin, password:admin}
 };
 
+var dbName = 'fgtc';
+
 gulp.task('push', function () {
   return gulp.src('couchapp.js')
-    .pipe(couchapp.push('test', couchappOptions));
+    .pipe(couchapp.push(dbName, couchappOptions));
 });
 
 gulp.task('browser-sync', function() {
@@ -18,14 +20,14 @@ gulp.task('browser-sync', function() {
   browserSync({
 
     // informs browser-sync to proxy our expressjs app which would run at the following location
-    proxy: 'http://127.0.0.1:5984/test/_design/register/_rewrite',
+    proxy: 'http://127.0.0.1:5984/' + dbName + '/_design/register/_rewrite',
 
     // informs browser-sync to use the following port for the proxied app
     // notice that the default port is 3000, which would clash with our expressjs
     port: 4000,
 
     // open the proxied app in chrome
-    browser: ['google-chrome']
+    //browser: ['google-chrome']
   });
 });
 
