@@ -11,6 +11,9 @@ var ddoc = {
   views: {
     "transactions": {
       "map": "function(doc) {if (doc.transactionType) {emit(null, doc);}}"
+    },
+    "products": {
+      "map": "function(doc) {if (doc.listPrice) {emit(null, doc);}}"
     }
   },
   shows: {},
