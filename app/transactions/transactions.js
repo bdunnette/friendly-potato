@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('register.view1', ['ngRoute'])
+angular.module('register.transactionList', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {
-    templateUrl: 'view1/view1.html',
-    controller: 'View1Ctrl'
+  $routeProvider.when('/transactions', {
+    templateUrl: 'transactions/transactions.html',
+    controller: 'transactionListCtrl'
   });
 }])
 
-.controller('View1Ctrl', ['$rootScope', '$scope', 'cornercouch', function($rootScope, $scope, cornercouch) {
+.controller('transactionListCtrl', ['$rootScope', '$scope', 'cornercouch', function($rootScope, $scope, cornercouch) {
   $scope.db = $rootScope.couch.getDB('test');
   $scope.newSlide = $scope.db.newDoc({
     type: 'slide'

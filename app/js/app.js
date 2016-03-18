@@ -3,12 +3,12 @@
 // Declare app level module which depends on views, and components
 angular.module('register', [
   'ngRoute',
-  'register.view1',
-  'register.view2',
+  'register.transactionList',
+  'register.transactionEdit',
   'CornerCouch'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider.otherwise({redirectTo: '/transactions'});
 }]).
 run(function($rootScope, cornercouch){
   $rootScope.couch = cornercouch();
