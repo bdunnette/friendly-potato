@@ -1,4 +1,4 @@
-<p>This is the partial for view 1.</p>
+<a class="btn btn-success" href="#/transaction/new">New Transaction</a>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -9,7 +9,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="row in db.rows" ng-click="rowClick($index)">
-      <td class="span2">{{ row.id }}</td>
+      <td class="span2"><a ng-href="#/transaction/{{ row.id }}">{{ row.id }}</a></td>
       <td class="span6">{{ row.value }}</td>
       <td class="span2">{{ row.doc.alias }}</td>
     </tr>
