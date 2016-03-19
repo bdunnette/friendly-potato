@@ -9,10 +9,13 @@ angular.module('register.transactionEdit', ['ngRoute'])
   });
 }])
 
-.controller('transactionEditCtrl', ['$rootScope', '$scope', 'cornercouch', '$routeParams', function($rootScope, $scope, cornercouch, $routeParams) {
-  $scope.db = $rootScope.couch.getDB('test');
+.controller('transactionEditCtrl', ['$rootScope', '$scope', 'cornercouch', '$routeParams', 'config', function($rootScope, $scope, cornercouch, $routeParams, config) {
+  $scope.db = $rootScope.couch.getDB(config.db);
+  
   if ($routeParams.transactionId === 'new') {
     $scope.transaction = $scope.db.newDoc();
+    // Still need to find effective sales tax - example query:
+    // http://localhost:5984/fgtc/_design/register/_view/taxes?limit=1&reduce=false&descending=true&startkey="2016-03-18"
   } else {
     $scope.transaction = $scope.db.getDoc($routeParams.transactionId);
   }

@@ -10,10 +10,13 @@ var ddoc = {
   ],
   views: {
     "transactions": {
-      "map": "function(doc) {if (doc.transactionType) {emit(null, doc);}}"
+      "map": "function(doc) {if (doc.transactionType) {emit(doc.date, doc);}}"
     },
     "products": {
-      "map": "function(doc) {if (doc.listPrice) {emit(null, doc);}}"
+      "map": "function(doc) {if (doc.listPrice) {emit(doc.name, doc);}}"
+    },
+    "taxes": {
+      "map": "function(doc) {if (doc.taxRate) {emit(doc.startDate, doc);}}"
     }
   },
   shows: {},
