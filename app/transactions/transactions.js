@@ -11,11 +11,10 @@ angular.module('register.transactionList', ['ngRoute'])
 
 .controller('transactionListCtrl', ['$rootScope', '$scope', 'cornercouch', 'config', function($rootScope, $scope, cornercouch, config) {
   $scope.db = $rootScope.couch.getDB(config.db);
-  $scope.newSlide = $scope.db.newDoc({
-    type: 'slide'
-  });
-
+  
   $scope.db.query("register", "transactions", {
-    include_docs: true
+    include_docs: true,
+    descending: true,
+    limit: 10
   });
 }]);
