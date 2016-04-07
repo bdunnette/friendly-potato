@@ -14,7 +14,9 @@ angular.module('register.transactionEdit', ['ngRoute'])
 
     if ($routeParams.transactionId === 'new') {
         $scope.transaction = $scope.db.newDoc({
-            date: new Date()
+            date: new Date(),
+            transaction_type: "Sale",
+            items: []
         });
         // Still need to find effective sales tax - example query:
         // http://localhost:5984/fgtc/_design/register/_view/taxes?limit=1&reduce=false&descending=true&startkey="2016-03-18"
@@ -22,7 +24,15 @@ angular.module('register.transactionEdit', ['ngRoute'])
         $scope.transaction = $scope.db.getDoc($routeParams.transactionId);
     }
     console.log($scope.transaction);
-
+    $scope.addItem = function() {
+        var insertItem = angular.copy($scope.newItem);
+        if ($scope.transaction.items) {
+            $scope.transaction.items.push(insertItem);
+        } else {
+            $scope.transaction.items = [insertItem];
+        }
+        $scope.transaction.save();
+    }
     $scope.saveTransaction = function() {
         $scope.transaction.save().success(function() {
             console.log($scope.transaction);

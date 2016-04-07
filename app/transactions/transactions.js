@@ -3,7 +3,7 @@
 angular.module('register.transactionList', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/transactions', {
+    $routeProvider.when('/', {
         templateUrl: 'transactions/transactions.html',
         controller: 'transactionListCtrl'
     });

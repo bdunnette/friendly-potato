@@ -4,6 +4,7 @@
 angular.module('register', [
     'ngRoute',
     'register.transactionList',
+    'register.transactionView',
     'register.transactionEdit',
     'register.products',
     'register.taxes',
@@ -12,7 +13,7 @@ angular.module('register', [
 ]).
 config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({
-        redirectTo: '/transactions'
+        redirectTo: '/'
     });
 }]).
 run(function($rootScope, cornercouch) {

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('register.transactionEdit', ['ngRoute'])
+angular.module('register.transactionView', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/transaction/:transactionId', {
