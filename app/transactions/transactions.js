@@ -15,7 +15,7 @@ angular.module('register.transactionList', ['ngRoute'])
     $scope.db.query("register", "transactions", {
         include_docs: true,
         descending: true,
-        limit: 10
+        limit: 20
     });
 
     $scope.nextClick = function() {

@@ -17,10 +17,10 @@
 <th>
   Quantity
 </th>
-<th>
-  Each Price
+<th ng-if="transaction.transaction_type != 'Donation'">
+  Unit Price
 </th>
-<th>
+<th ng-if="transaction.transaction_type != 'Donation'">
   Extended Price
 </th>
   </thead>
@@ -32,11 +32,19 @@
       <td>
         {{item.quantity}}
       </td>
-      <td>
-        {{item.each_price}}
+      <td ng-if="transaction.transaction_type != 'Donation'">
+        {{item.each_price | currency}}
+      </td>
+      <td ng-if="transaction.transaction_type != 'Donation'">
+        {{item.extended_price | currency}}
+      </td>
+    </tr>
+    <tr ng-if="transaction.transaction_type != 'Donation'">
+      <td colspan=3>
+        <span class="pull-right"><strong>Total:</strong></span>
       </td>
       <td>
-        {{item.extended_price}}
+        <strong>{{transaction.total | currency}}</strong>
       </td>
     </tr>
   </tbody>

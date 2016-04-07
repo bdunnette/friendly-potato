@@ -33,38 +33,40 @@
 </div>
 
 <form ng-submit="addItem()">
-<div class="row">
-    <div class="form-group col-md-3">
-        <label for="itemDescription">Description</label>
-        <input type="text" id="itemDescription" class="form-control" ng-model="newItem.description"/>
-    </div>
-    <div class="form-group col-md-2">
-        <label for="itemQuantity">Quantity</label>
-        <input type="number" id="itemQuantity" class="form-control" ng-model="newItem.quantity"/>
-    </div>
-    <div class="form-group col-md-2">
-        <label for="itemEachPrice">Each Price</label>
-        <input type="number" id="itemEachPrice" class="form-control" ng-model="newItem.each_price"/>
-    </div>
-    <div class="form-group col-md-2">
-        <label for="itemExtPrice">Extended Price</label>
-        <input type="number" id="itemExtPrice" class="form-control" ng-model="newItem.extended_price"/>
-    </div>
-    <div class="form-group col-md-2">
-        <input class="btn btn-primary" type="submit" value="Add Item"/>
-    </div>
+    <div class="row">
+        <div class="form-group col-md-3">
+            <label for="itemDescription">Description</label>
+            <input type="text" id="itemDescription" class="form-control" ng-model="newItem.description"/>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="itemQuantity">Quantity</label>
+            <input type="number" id="itemQuantity" class="form-control" ng-model="newItem.quantity" ng-change="updatePrices()" min=0 step="0.01" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"/>
+        </div>
+        <div class="form-group col-md-2" ng-if="transaction.transaction_type != 'Donation'">
+            <label for="itemEachPrice">Each Price</label>
+            <input type="number" id="itemEachPrice" class="form-control" ng-model="newItem.each_price" ng-change="updatePrices()" step="0.01" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" />
+        </div>
+        <div class="form-group col-md-2" ng-if="transaction.transaction_type != 'Donation'">
+            <label for="itemExtPrice">Extended Price</label>
+            <input type="number" id="itemExtPrice" class="form-control" ng-model="newItem.extended_price" ng-change="updatePrices(newItem.extended_price)" step="0.01" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"/>
+        </div>
+        <div class="form-group col-md-2">
+            <input class="btn btn-primary" type="submit" value="Add Item"/>
+        </div>
 
-</div>
+    </div>
 </form>
 
 <button class='btn btn-success' ng-click="saveTransaction()">Save</button>
 
 <table class="table table-striped">
-  <tbody>
-    <tr ng-repeat="item in transaction.items">
-      <td>
-        {{item}}
-      </td>
-    </tr>
-  </tbody>
+    <tbody>
+        <tr ng-repeat="item in transaction.items">
+            <td>
+                {{item}}
+            </td>
+        </tr>
+    </tbody>
 </table>
+
+<h2>Total: {{transaction.total}}</h2>
