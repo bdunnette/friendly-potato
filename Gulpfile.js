@@ -2,6 +2,7 @@ var gulp = require('gulp'),
   foreach = require('gulp-foreach'),
   browserSync = require('browser-sync'),
   couchapp = require('gulp-couchapp'),
+  install = require("gulp-install"),
   ensure = require('couchdb-ensure'),
   push = require('couchdb-push');
 
@@ -14,6 +15,11 @@ var couchappOptions = {
 
 var dbHost = 'http://127.0.0.1:5984/';
 var dbName = 'fgtc';
+
+gulp.task('install', function() {
+  return gulp.src(['./bower.json', './package.json'])
+    .pipe(install());
+});
 
 gulp.task('push', function() {
   // ensure db exists before pushing to it
@@ -59,6 +65,6 @@ gulp.task('bs-reload', function() {
   browserSync.reload();
 });
 
-gulp.task('default', ['push', 'browser-sync'], function() {
+gulp.task('default', ['install', 'push', 'browser-sync'], function() {
   gulp.watch(['couchapp.js', 'app/**/*.html', 'app/**/*.js', 'app/**/*.css'], ['push', 'bs-reload']);
 });

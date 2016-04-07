@@ -2,20 +2,23 @@
 
 // Declare app level module which depends on views, and components
 angular.module('register', [
-  'ngRoute',
-  'register.transactionList',
-  'register.transactionEdit',
-  'register.products',
-  'register.taxes',
-  'CornerCouch'
+    'ngRoute',
+    'register.transactionList',
+    'register.transactionEdit',
+    'register.products',
+    'register.taxes',
+    'CornerCouch',
+    'registerFilters'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/transactions'});
+    $routeProvider.otherwise({
+        redirectTo: '/transactions'
+    });
 }]).
-run(function($rootScope, cornercouch){
-  $rootScope.couch = cornercouch();
-  $rootScope.couch.session();
-  $rootScope.dbName = '';
+run(function($rootScope, cornercouch) {
+    $rootScope.couch = cornercouch();
+    $rootScope.couch.session();
+    $rootScope.dbName = '';
 });
 
 var Config = {
@@ -23,3 +26,5 @@ var Config = {
 };
 
 angular.module('register').constant('config', Config);
+
+angular

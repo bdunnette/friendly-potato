@@ -1,15 +1,32 @@
 <a class="btn btn-success" href="#/transaction/new">New Transaction</a>
 <table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Transaction Date</th>
-      <th>Data</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="row in db.rows" ng-click="rowClick($index)">
-      <td class="span2"><a ng-href="#/transaction/{{ row.id }}">{{ row.key | date:'medium' }}</a></td>
-      <td class="span6">{{ row.value }}</td>
-    </tr>
-  </tbody>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Customer</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="transaction in db.rows" ng-click="rowClick($index)">
+            <td class="span2">
+                <a ng-href="#/transaction/{{ transaction.id }}">{{ transaction.key | date:'shortDate' }}</a>
+            </td>
+            <td class="span2">{{ transaction.value.transaction_type }}</td>
+            <td class="span2">
+              {{transaction.value.party.name}}
+            </td>
+        </tr>
+    </tbody>
 </table>
+<ul class="pager">
+    <li>
+        <a ng-class="{muted: db.queryActive}" ng-click="prevClick()" ng-show="db.prevRows.length">Newer</a>
+    </li>
+    <li>
+        <a ng-class="{muted: db.queryActive}" ng-click="nextClick()" ng-show="db.nextRow">Older</a>
+    </li>
+    <li>
+        <a ng-class="{muted: db.queryActive}" ng-click="moreClick()" ng-show="db.nextRow">More...</a>
+    </li>
+</ul>

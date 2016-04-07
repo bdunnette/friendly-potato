@@ -1,0 +1,43 @@
+<h2>{{transaction.transaction_type}} {{transaction._id}}</h2>
+
+<h3 >{{transaction.date | arrayDate | date:'shortDate'}}</h3>
+
+<h3>{{transaction.party.name}}<br/>
+  {{transaction.party.city}}
+</br/></h3>
+
+<table class="table table-striped">
+  <caption>
+    Items
+  </caption>
+  <thead>
+  <th>
+    Description
+  </th>
+<th>
+  Quantity
+</th>
+<th>
+  Each Price
+</th>
+<th>
+  Extended Price
+</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in transaction.items">
+      <td>
+        {{item.description}}
+      </td>
+      <td>
+        {{item.quantity}}
+      </td>
+      <td>
+        {{item.each_price}}
+      </td>
+      <td>
+        {{item.extended_price}}
+      </td>
+    </tr>
+  </tbody>
+</table>

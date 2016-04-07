@@ -1,9 +1,9 @@
 {
-  "name": "image-mapper",
+  "name": "register",
   "description": "",
   "main": "index.js",
   "authors": [
-    "Brian Dunnette <dunn0172@umn.edu>"
+    "Brian Dunnette <brian@dunnette.us>"
   ],
   "license": "MIT",
   "moduleType": [],
