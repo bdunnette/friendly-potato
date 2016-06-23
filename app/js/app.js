@@ -27,5 +27,3 @@ var Config = {
 };
 
 angular.module('register').constant('config', Config);
-
-angular

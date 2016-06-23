@@ -27,7 +27,9 @@ angular.module('register.transactionEdit', ['ngRoute'])
     console.log($scope.transaction);
 
     $scope.newItem = {
-        quantity: 1
+        quantity: 1,
+        each_price: 1,
+        extended_price: 1
     };
 
     $scope.addItem = function() {
