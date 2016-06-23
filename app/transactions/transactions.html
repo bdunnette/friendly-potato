@@ -5,6 +5,7 @@
             <th>Date</th>
             <th>Type</th>
             <th>Customer</th>
+            <th>Total</th>
         </tr>
     </thead>
     <tbody>
@@ -12,9 +13,14 @@
             <td class="span2">
                 <a ng-href="#/transaction/{{ transaction.id }}">{{ transaction.key | date:'shortDate' }}</a>
             </td>
-            <td class="span2">{{ transaction.value.transaction_type }}</td>
+            <td class="span2">
+              {{ transaction.value.transaction_type }}
+            </td>
             <td class="span2">
               {{transaction.value.party.name}}
+            </td>
+            <td class="span2">
+              {{transaction.value.total | currency}}
             </td>
         </tr>
     </tbody>
