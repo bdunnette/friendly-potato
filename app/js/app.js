@@ -3,13 +3,14 @@
 // Declare app level module which depends on views, and components
 angular.module('register', [
     'ngRoute',
+    'CornerCouch',
+    'schemaForm',
+    'registerFilters',
     'register.transactionList',
     'register.transactionView',
     'register.transactionEdit',
     'register.products',
-    'register.taxes',
-    'CornerCouch',
-    'registerFilters'
+    'register.taxes'
 ]).
 config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({

@@ -9,8 +9,24 @@ angular.module('register.transactionEdit', ['ngRoute'])
     });
 }])
 
-.controller('transactionEditCtrl', ['$rootScope', '$scope', 'cornercouch', '$routeParams', 'config', function($rootScope, $scope, cornercouch, $routeParams, config) {
+.controller('transactionEditCtrl', ['$rootScope', '$scope', 'cornercouch', '$routeParams', 'config', '$http', function($rootScope, $scope, cornercouch, $routeParams, config, $http) {
     $scope.db = $rootScope.couch.getDB(config.db);
+
+    $http.get('./schema/transaction.json').then(function(response) {
+        $scope.transactionSchema = response.data;
+        console.log($scope.transactionSchema)
+    }, function(err) {
+        console.log(err)
+    });
+
+    $scope.form = [
+        "*", {
+            type: "submit",
+            title: "Save"
+        }
+    ];
+
+    $scope.model = {};
 
     if ($routeParams.transactionId === 'new') {
         $scope.transaction = $scope.db.newDoc({
